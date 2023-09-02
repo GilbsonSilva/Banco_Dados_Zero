@@ -53,9 +53,8 @@ CREATE TABLE IF NOT EXISTS Cursos (
 CREATE TABLE IF NOT EXISTS Formas_Pagamentos (
   idFormas_Pagamentos INT NOT NULL AUTO_INCREMENT COMMENT 'Id da Formas de pagamentos, chave primária auto incremento.',
   Tipo_Pagamento VARCHAR(45) NOT NULL DEFAULT 'Pix' COMMENT 'Tipo de Pagamento. Padrão Pix.\nex: Cartão, Boleto, Débito.',
-  PRIMARY KEY (idFormas_Pagamentos),
-  UNIQUE INDEX Tipo_Pagamento_UNIQUE (Tipo_Pagamento ASC) VISIBLE,
-  UNIQUE INDEX id_UNIQUE (id ASC) VISIBLE);
+  PRIMARY KEY (idFormas_Pagamentos)
+  );
   
 -- criar tabela cartão de crédito
 CREATE TABLE IF NOT EXISTS Cartao_Credito (
@@ -65,15 +64,7 @@ CREATE TABLE IF NOT EXISTS Cartao_Credito (
   Bandeira VARCHAR(45) NOT NULL COMMENT 'Bandeira - visa, master etc...',
   Data_Validade DATE NOT NULL COMMENT 'Data de validade',
   fk_idAluno INT NOT NULL COMMENT 'Chave estrangeira do id do aluno.',
-  PRIMARY KEY (idCartao_Credito),
-  UNIQUE INDEX Numero_UNIQUE (Numero ASC) VISIBLE,
-  UNIQUE INDEX id_UNIQUE (id ASC) VISIBLE,
-  INDEX fk_Pagamentos_Aluno1_idx (fk_idAluno ASC) VISIBLE,
-  CONSTRAINT fk_Pagamentos_Aluno1
-  FOREIGN KEY (fk_idAluno)
-  REFERENCES banco_dados_zero.Alunos (idAluno)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION
+  PRIMARY KEY (idCartao_Credito)
 );
 
 CREATE TABLE IF NOT EXISTS Registro_Presenca(
